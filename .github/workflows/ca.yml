@@ -1,4 +1,4 @@
-name: World - fetch and post
+name: Canada - fetch and post
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATA_URL: 'https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.json'
-      TWITTER_SCREEN_NAME: 'fullyjabbed'
+      TWITTER_SCREEN_NAME: 'fullyjabbedCA'
       JQ_FILTERS: '.[] | select(.iso_code == "CAN") | .data[-1] | .people_fully_vaccinated_per_hundred'
 
     steps:
@@ -46,8 +46,8 @@ jobs:
         env:
              API_KEY: ${{ secrets.API_KEY }}
              API_KEY_SECRET: ${{ secrets.API_KEY_SECRET }}
-             ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN_WORLD }}
-             ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET_WORLD }}
+             ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN_CANADA }}
+             ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET_CANADA }}
       - name: Debug output
         run: |
           echo ${{ steps.uptake.outputs.fully }}
@@ -60,5 +60,5 @@ jobs:
           message: ${{ steps.tweet.outputs.formatted }}
           apiKey: ${{ secrets.API_KEY }}
           apiKeySecret: ${{ secrets.API_KEY_SECRET }}
-          accessToken: ${{ secrets.ACCESS_TOKEN_WORLD }}
-          accessTokenSecret: ${{ secrets.ACCESS_TOKEN_SECRET_WORLD }}
+          accessToken: ${{ secrets.ACCESS_TOKEN_CANADA }}
+          accessTokenSecret: ${{ secrets.ACCESS_TOKEN_SECRET_CANADA }}
