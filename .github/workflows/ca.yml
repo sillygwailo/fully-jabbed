@@ -3,7 +3,7 @@ name: Canada - fetch and post
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '*/15 * * * *'
+    - cron:  '10 */8 * * *'
 
 jobs:
   bot:
